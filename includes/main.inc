@@ -478,7 +478,10 @@ function coder_upgrade_convert_functions(&$reader) {
       continue;
     }
 
-    $name = &$item->name;
+    $name = $item->printName();
+
+    // TODO: Remove the following line for V2 of the grammar parser.
+//    $name = $item->name;
     cdp("name = $name");
 
     // Convert theme_xxx function calls.

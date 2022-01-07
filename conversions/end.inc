@@ -126,7 +126,10 @@ function coder_upgrade_create_autoload($module_name, $module_path, $classes) {
       $is_test_file = pathinfo($path, PATHINFO_EXTENSION) == 'test';
       if (!$is_test_file) {
         foreach ($class_nodes['classes'] as $class_node) {
-          $strings[] = "'" . $class_node->data->name . "' => '" . $path . "',";
+          $strings[] = "'" . $class_node->data->printName() . "' => '" . $path . "',";
+
+          // TODO: Remove the following line for V2 of the grammar parser.
+//          $strings[] = "'" . $class_node->data->name . "' => '" . $path . "',";
         }
       }
     }
